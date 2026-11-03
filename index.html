@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CVEWatch - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Internal CSS -->
+    <style>
+        .jump-bar {
+            background-color: #111a2e;
+            border: 1px solid #22314f;
+            border-radius: 12px;
+            padding: 12px 15px;
+            margin-bottom: 25px;
+            box-shadow: 0px 4px 12px black;
+        }
+
+        .jump-bar span {
+            color: #94a3b8;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .jump-bar a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px 8px 5px 0px;
+            background-color: #1b2a47;
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            border: 1px solid #38bdf8;
+            border-radius: 25px;
+        }
+
+        .jump-bar a:hover {
+            background-color: #38bdf8;
+            color: #060a14;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <img src="logo.svg" alt="CVEWatch logo" width="200" height="50" usemap="#logomap">
+    <map name="logomap">
+        <area shape="rect" coords="0,0,200,50" href="about.html" alt="About us">
+    </map>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Sign up</a></li>
+        <li><a href="about.html">About us</a></li>
+    </ul>
+</header>
+
+<div class="container">
+
+    <div class="hero">
+        <!-- Embedded script -->
+        <script>
+            var now = new Date();
+            var hour = now.getHours(); // current hour (0-23)
+
+            if (hour < 12)
+                document.write("<h2>Good Morning!</h2>");
+            if (hour >= 12 && hour < 18)
+                document.write("<h2>Good Afternoon!</h2>");
+            if (hour >= 18)
+                document.write("<h2>Good Evening!</h2>");
+        </script>
+        <h1>Know the exploits before they hit you</h1>
+        <p>CVEWatch tracks software vulnerabilities (CVEs) in one place. Each entry shows what is affected, how serious it is and when it was published.</p>
+        <!-- External script -->
+        <script src="script.js"></script>
+        <p class="muted">Data last updated: 3 November 2026</p>
+    </div>
+
+    <div class="stat">
+        <span class="num">12</span>
+        Tracked CVEs
+    </div>
+    <div class="stat">
+        <span class="num" style="color: #ef4444;">6</span>
+        Critical
+    </div>
+    <div class="stat">
+        <span class="num" style="color: #f97316;">5</span>
+        High
+    </div>
+    <div class="stat last">
+        <span class="num" style="color: #eab308;">1</span>
+        Medium
+    </div>
+    <div class="clear"></div>
+
+    <!-- Internal linking -->
+    <div class="jump-bar">
+        <span>Jump to:</span>
+        <a href="#latest">Latest CVEs</a>
+        <a href="#famous">Major past CVEs</a>
+        <a href="#severity">Severity guide</a>
+        <a href="#safe">Stay safe</a>
+    </div>
+
+    <section id="latest" class="card">
+        <span class="badge">New</span>
+        <h2>Latest CVEs</h2>
+        <p class="muted">Actively exploited vulnerabilities reported in the last week.</p>
+        <table>
+            <tr>
+                <th>CVE ID</th>
+                <th>Product</th>
+                <th>Severity</th>
+                <th>CVSS</th>
+                <th>Reported</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-58115">CVE-2026-58115</a></td>
+                <td>Siemens SIMATIC IoT2050 Advanced</td>
+                <td><span class="pill critical">Critical</span></td>
+                <td>10.0</td>
+                <td>2026-11-03</td>
+                <td>Missing authentication allows remote code execution</td>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-111357">CVE-2026-111357</a></td>
+                <td>Ivanti Connect Secure</td>
+                <td><span class="pill high">High</span></td>
+                <td>8.8</td>
+                <td>2026-10-30</td>
+                <td>Missing authentication allows privilege escalation</td>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-118527">CVE-2026-118527</a></td>
+                <td>Ivanti Connect Secure</td>
+                <td><span class="pill medium">Medium</span></td>
+                <td>4.3</td>
+                <td>2026-10-30</td>
+                <td>Predictable identifiers allow file upload</td>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-97229">CVE-2026-97229</a></td>
+                <td>GitLab CE / EE</td>
+                <td><span class="pill critical">Critical</span></td>
+                <td>10.0</td>
+                <td>2026-10-29</td>
+                <td>Integer overflow leads to remote code execution</td>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-76418">CVE-2026-76418</a></td>
+                <td>Cisco ASA and FTD</td>
+                <td><span class="pill high">High</span></td>
+                <td>8.6</td>
+                <td>2026-10-29</td>
+                <td>Remote attacker can crash the firewall (DoS)</td>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2026-111497">CVE-2026-111497</a></td>
+                <td>Google Brotli</td>
+                <td><span class="pill critical">Critical</span></td>
+                <td>9.8</td>
+                <td>2026-10-27</td>
+                <td>Unchecked return value vulnerability</td>
+            </tr>
+        </table>
+        <p class="muted">Sources: CISA Known Exploited Vulnerabilities catalog, The Hacker News, Help Net Security</p>
+    </section>
+
+    <section id="famous" class="card">
+        <h2>Major past CVEs</h2>
+        <table>
+            <tr>
+                <th>CVE ID</th>
+                <th>Name</th>
+                <th>Severity</th>
+                <th>CVSS</th>
+                <th>Published</th>
+                <th>Description</th>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2021-44228">CVE-2021-44228</a></td>
+                <td>Log4Shell</td>
+                <td><span class="pill critical">Critical</span></td>
+                <td>10.0</td>
+                <td>2021-12-10</td>
+                <td>Remote code execution in Apache Log4j</td>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2022-22965">CVE-2022-22965</a></td>
+                <td>Spring4Shell</td>
+                <td><span class="pill critical">Critical</span></td>
+                <td>9.8</td>
+                <td>2022-04-01</td>
+                <td>Remote code execution in Spring Framework</td>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2014-6271">CVE-2014-6271</a></td>
+                <td>Shellshock</td>
+                <td><span class="pill critical">Critical</span></td>
+                <td>9.8</td>
+                <td>2014-09-24</td>
+                <td>Command injection through GNU Bash</td>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2017-0144">CVE-2017-0144</a></td>
+                <td>EternalBlue</td>
+                <td><span class="pill high">High</span></td>
+                <td>8.1</td>
+                <td>2017-03-14</td>
+                <td>Remote code execution in Microsoft SMBv1</td>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2023-44487">CVE-2023-44487</a></td>
+                <td>HTTP/2 Rapid Reset</td>
+                <td><span class="pill high">High</span></td>
+                <td>7.5</td>
+                <td>2023-10-10</td>
+                <td>Denial of service against HTTP/2 servers</td>
+            </tr>
+            <tr>
+                <td><a href="https://nvd.nist.gov/vuln/detail/CVE-2014-0160">CVE-2014-0160</a></td>
+                <td>Heartbleed</td>
+                <td><span class="pill high">High</span></td>
+                <td>7.5</td>
+                <td>2014-04-07</td>
+                <td>Memory leak in OpenSSL</td>
+            </tr>
+        </table>
+        <p class="muted">Source: National Vulnerability Database (NVD)</p>
+    </section>
+
+    <section id="severity" class="card">
+        <h2>Severity guide</h2>
+        <article>
+            <p>Every CVE gets a CVSS score from 0 to 10. The higher the score, the faster you should patch.</p>
+            <ul>
+                <li><strong>Critical (9.0 to 10.0):</strong> patch immediately</li>
+                <li><strong>High (7.0 to 8.9):</strong> patch within a few days</li>
+                <li><strong>Medium (4.0 to 6.9):</strong> patch within a week or two</li>
+                <li><strong>Low (0.1 to 3.9):</strong> patch during normal maintenance</li>
+            </ul>
+        </article>
+    </section>
+
+    <section id="safe" class="card">
+        <h2>How to stay safe</h2>
+        <article>
+            <ol>
+                <li>Turn on automatic updates for your system and apps.</li>
+                <li>Patch Critical and High CVEs first.</li>
+                <li>Remove software you no longer use.</li>
+                <li>Check the vendor's security page for fixes.</li>
+            </ol>
+            <p style="color: #94a3b8; font-size: 14px;">Tip: a CVE ID looks like CVE-YEAR-NUMBER.</p>
+        </article>
+    </section>
+
+</div>
+
+<footer>
+    <p>CVEWatch | Alhusain Alsharif | 2340982 | CPIS 358</p>
+</footer>
+
+</body>
+</html>
