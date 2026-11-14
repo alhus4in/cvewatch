@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>CVEWatch - Home</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
     <!-- Internal CSS -->
     <style>
         .jump-bar {
@@ -39,7 +40,7 @@
         }
     </style>
 </head>
-<body>
+<body onload="start()">
 
 <header>
     <img src="logo.svg" alt="CVEWatch logo" width="200" height="50" usemap="#logomap">
@@ -64,32 +65,33 @@
 
             if (hour < 12)
                 document.write("<h2>Good Morning!</h2>");
-            if (hour >= 12 && hour < 18)
-                document.write("<h2>Good Afternoon!</h2>");
-            if (hour >= 18)
-                document.write("<h2>Good Evening!</h2>");
+            if (hour >= 12) {
+                if (hour < 18)
+                    document.write("<h2>Good Afternoon!</h2>");
+                if (hour >= 18)
+                    document.write("<h2>Good Evening!</h2>");
+            }
         </script>
         <h1>Know the exploits before they hit you</h1>
         <p>CVEWatch tracks software vulnerabilities (CVEs) in one place. Each entry shows what is affected, how serious it is and when it was published.</p>
-        <!-- External script -->
-        <script src="script.js"></script>
+        <p class="muted">Today: <span id="today"></span></p>
         <p class="muted">Data last updated: 3 November 2026</p>
     </div>
 
     <div class="stat">
-        <span class="num">12</span>
+        <span class="num" id="statTotal">12</span>
         Tracked CVEs
     </div>
     <div class="stat">
-        <span class="num" style="color: #ef4444;">6</span>
+        <span class="num" style="color: #ef4444;" id="statCritical">6</span>
         Critical
     </div>
     <div class="stat">
-        <span class="num" style="color: #f97316;">5</span>
+        <span class="num" style="color: #f97316;" id="statHigh">5</span>
         High
     </div>
     <div class="stat last">
-        <span class="num" style="color: #eab308;">1</span>
+        <span class="num" style="color: #eab308;" id="statMedium">1</span>
         Medium
     </div>
     <div class="clear"></div>
@@ -103,11 +105,25 @@
         <a href="#safe">Stay safe</a>
     </div>
 
+    <div class="card filter-bar">
+        <h2>Search CVEs</h2>
+        <input type="text" id="searchBox" placeholder="Search by ID, product or description">
+        <button class="btn" onclick="applyFilters()">Search</button>
+        <p>Show only:
+            <button class="btn small" onclick="setLevel('All')">All</button>
+            <button class="btn small" onclick="setLevel('Critical')">Critical</button>
+            <button class="btn small" onclick="setLevel('High')">High</button>
+            <button class="btn small" onclick="setLevel('Medium')">Medium</button>
+            <button class="btn small" onclick="resetFilters()">Reset</button>
+        </p>
+        <p id="filterMsg" class="muted"></p>
+    </div>
+
     <section id="latest" class="card">
         <span class="badge">New</span>
         <h2>Latest CVEs</h2>
         <p class="muted">Actively exploited vulnerabilities reported in the last week.</p>
-        <table>
+        <table id="latestTable">
             <tr>
                 <th>CVE ID</th>
                 <th>Product</th>
@@ -170,7 +186,7 @@
 
     <section id="famous" class="card">
         <h2>Major past CVEs</h2>
-        <table>
+        <table id="pastTable">
             <tr>
                 <th>CVE ID</th>
                 <th>Name</th>
@@ -231,9 +247,18 @@
         <p class="muted">Source: National Vulnerability Database (NVD)</p>
     </section>
 
+    <section id="tips" class="card">
+        <h2>Security tip</h2>
+        <img id="tipImg" class="tip-img" src="tip1.svg" alt="Security tip icon" width="90" height="90">
+        <p id="tipText"></p>
+        <button class="btn" onclick="nextTip()">Next tip</button>
+        <div class="clear"></div>
+    </section>
+
     <section id="severity" class="card">
         <h2>Severity guide</h2>
-        <article>
+        <button class="btn small" id="btnSeverity" onclick="toggleSection('severityBody', 'btnSeverity')">Hide</button>
+        <article id="severityBody">
             <p>Every CVE gets a CVSS score from 0 to 10. The higher the score, the faster you should patch.</p>
             <ul>
                 <li><strong>Critical (9.0 to 10.0):</strong> patch immediately</li>
@@ -246,7 +271,8 @@
 
     <section id="safe" class="card">
         <h2>How to stay safe</h2>
-        <article>
+        <button class="btn small" id="btnSafe" onclick="toggleSection('safeBody', 'btnSafe')">Hide</button>
+        <article id="safeBody">
             <ol>
                 <li>Turn on automatic updates for your system and apps.</li>
                 <li>Patch Critical and High CVEs first.</li>

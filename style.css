@@ -43,10 +43,12 @@ header ul {
 
 header li {
     display: inline-block;
+    vertical-align: top;
 }
 
 header li a {
     display: block;
+    line-height: 20px;
     padding: 20px 15px;
     color: white;
     text-decoration: none;
@@ -225,4 +227,54 @@ footer {
     background-color: #060a14;
     color: #94a3b8;
     border-top: 1px solid #22314f;
+}
+
+/* keep CVE IDs and dates on one line */
+td:first-child,
+td:nth-child(5) {
+    white-space: nowrap;
+}
+
+/* Form messages and JavaScript features */
+.error {
+    display: block;
+    min-height: 18px;
+    color: #f87171;
+    font-size: 14px;
+}
+
+.btn.small {
+    padding: 6px 14px;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.filter-bar input,
+.filter-bar select {
+    padding: 10px;
+    background-color: #0b1220;
+    color: white;
+    border: 1px solid #3b4d70;
+    border-radius: 6px;
+    margin: 0px 10px 10px 0px;
+}
+
+.filter-bar input {
+    width: 320px;
+    max-width: 100%;
+}
+
+.tip-img {
+    float: left;
+    margin-right: 20px;
+}
+
+#strength {
+    display: block;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.filter-bar .btn {
+    margin: 0px 8px 8px 0px;
 }

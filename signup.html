@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title>CVEWatch - Sign up</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
 
@@ -25,15 +26,24 @@
     <h1>Sign up</h1>
 
     <section class="card">
-        <form action="login.html" method="post">
+        <form action="login.html" method="post" novalidate onsubmit="return validateSignup()" onreset="clearErrors()">
             <label for="fullname">Full name</label>
-            <input type="text" id="fullname" name="fullname" required>
+            <input type="text" id="fullname" name="fullname" onblur="checkName()">
+            <span class="error" id="nameError"></span>
 
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required>
+            <input type="email" id="email" name="email" placeholder="you@example.com" onblur="checkEmail()">
+            <span class="error" id="emailError"></span>
 
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" onblur="checkPassword(); showStrength()">
+            <span class="error" id="passwordError"></span>
+            <span id="strength"></span>
+            <button type="button" class="btn small" id="showBtn" onclick="togglePassword('password', 'showBtn')">Show password</button>
+
+            <label for="confirm">Confirm password</label>
+            <input type="password" id="confirm" name="confirm" onblur="checkConfirm()">
+            <span class="error" id="confirmError"></span>
 
             <label for="software">Software you use most</label>
             <input type="text" id="software" name="software" list="softwarelist">
@@ -55,6 +65,7 @@
             <label for="alerts" style="display: inline;">Email me about new Critical CVEs</label></p>
 
             <button type="submit" class="btn">Create account</button>
+            <button type="reset" class="btn">Clear form</button>
         </form>
     </section>
 
