@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>CVEWatch - Home</title>
@@ -48,7 +48,7 @@
         <area shape="rect" coords="0,0,200,50" href="about.html" alt="About us">
     </map>
     <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html" class="active">Home</a></li>
         <li><a href="login.html">Login</a></li>
         <li><a href="signup.html">Sign up</a></li>
         <li><a href="about.html">About us</a></li>
@@ -107,7 +107,7 @@
 
     <div class="card filter-bar">
         <h2>Search CVEs</h2>
-        <input type="text" id="searchBox" placeholder="Search by ID, product or description">
+        <input type="text" id="searchBox" placeholder="Search by ID, product or description" onkeyup="applyFilters()">
         <button class="btn" onclick="applyFilters()">Search</button>
         <p>Show only:
             <button class="btn small" onclick="setLevel('All')">All</button>
@@ -256,8 +256,8 @@
     </section>
 
     <section id="severity" class="card">
+        <button class="btn small right" id="btnSeverity" onclick="toggleSection('severityBody', 'btnSeverity')">Hide</button>
         <h2>Severity guide</h2>
-        <button class="btn small" id="btnSeverity" onclick="toggleSection('severityBody', 'btnSeverity')">Hide</button>
         <article id="severityBody">
             <p>Every CVE gets a CVSS score from 0 to 10. The higher the score, the faster you should patch.</p>
             <ul>
@@ -270,8 +270,8 @@
     </section>
 
     <section id="safe" class="card">
+        <button class="btn small right" id="btnSafe" onclick="toggleSection('safeBody', 'btnSafe')">Hide</button>
         <h2>How to stay safe</h2>
-        <button class="btn small" id="btnSafe" onclick="toggleSection('safeBody', 'btnSafe')">Hide</button>
         <article id="safeBody">
             <ol>
                 <li>Turn on automatic updates for your system and apps.</li>
